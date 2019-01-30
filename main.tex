@@ -490,15 +490,158 @@ $$
 
 This gives us a constraint on the accelerations!
 
-We can do the same thing we did here with other more complicated pulley problems as well! First, find an expression for the length of the string, take the second derivative of the expression and set it to 0 to solve for an expression relating the various accelerations!
+We can do the same thing we did here with other more complicated pulley problems as well! First, find an expression for the length of the string, take the second derivative of the expression and set it to 0 to solve for an expression relating the various accelerations.
 
 \subsection{Rope with Mass}
+Let's consider a rope with some mass $m$ and length $L$ hanging from the wall:
+
+\includegraphics[scale=0.6]{mass_rope.png}
+
+What is the tension at different parts in the rope?
+
+Let's break the rope down into small $\Delta x$:
+
+\includegraphics[scale=0.7]{mass_rope_analysis.png}
+
+Each $\Delta x$ segment of the rope has a mass $\Delta m$. Thus, we can analyze the forces in the y direction.
+
+There is a tension force upwards on the small mass element $T(x_1)$ and tension downwards $T(x_1+\Delta x)$. There is also the a gravitational force downwards $\Delta m g$.
+
+Adding the forces together and setting them to 0 (since our system is in equilibrium) gives us:
+
+
+$$\sum \mathbf{F} = T(x_1)-T(x_1+\Delta x) - \Delta m g = 0$$
+
+Let's introduce a constant called \textbf{mass density}:
+
+$$\mu = \frac{m}{L}$$
+
+Thus,
+$$\Delta m = \mu\Delta x$$
+
+Plugging this into our equation and moving terms:
+$$T(x_1+\Delta x)-T(x_1) = -\mu\Delta x g $$
+
+Dividing by $\Delta x$:
+$$\frac{T(x_1+\Delta x)-T(x_1)}{\Delta x} = -\mu g$$
+
+Let's take the limit as $\Delta x \to 0$:
+
+$$\lim_{\Delta x \to 0}\frac{T(x_1+\Delta x)-T(x_1)}{\Delta x} = -\mu g$$
+
+From calculus, we know the left hand side is just the definition of a derivative:
+
+$$\dv{T(x)}{x} = -\mu g$$
+
+Taking integrals of both sides up to an arbitrary $x$:
+
+$$\int_{T(0)}^{T(x)} \dd T(x) = \int_0^x-\mu g \dd x$$
+
+This is just:
+
+$$T(x) - T(0) = -\mu g x$$
+
+
+What is $T(0)$?
+Since at the top we have to support the entire weight of the rope, the tension must be:
+
+$$T(0) = mg = \mu g L$$
+
+Thus,
+$$T(x) = \mu g L- \mu g x$$
+
+$$\boxed{
+T(x) = \mu g(L-x)
+}$$
+
+
+\section{Fluid Mechanics}
+
 
 
 
 \chapter{Energy}
 \section{Introduction}
+Energy plays an enormous role in running almost all processes in the world. It is hard to precisely define what it is and the definition is often circular.
+
+
+
 \section{Work}
+\subsection{Constant Force}
+Let's introduce a new concept called work.
+
+Imagine applying a constant force on some block with some mass. If you applied the force vertically, you would see no movement, no matter what magnitude of the force you applied. 
+
+The work done by you is defined to be:
+
+\begin{mytheo}{Work by Constant Force}{workConst}
+    The work done by a constant force on a body is:
+    
+    $$W = |\mathbf{F}|\Delta r \cos(\theta)$$
+    
+    where 
+    $\mathbf{F}$ - is the force being applied
+    $\Delta r$ is the displacement of the object
+    $\theta$ is the angle between the object's movement and force being applied
+    
+    It is measured in $N \vdot m$ or joules(J)
+\end{mytheo}
+
+\includegraphics[scale=0.5]{work.png}
+
+
+Thus, the work done is simply the magnitude of the force in the direction of movement of the object multiplied by the actual movement of the object.
+
+
+We can use the concept of the dot product to simplify our analysis, since the geometric interpretation of it in fact is the function described above:
+
+
+\begin{mytheo}{Formula for Work by Constant Force}{workConst}
+    The work done by a constant force can also be represented as:
+    $$W = |\mathbf{F}|\Delta r \cos(\theta) = \mathbf{F} \vdot \Delta r$$
+\end{mytheo}
+
+
+\subsection{Changing Force}
+
+Imagine that the force is changing as we're moving our object. How do we find the work done by us to move the object?
+
+Let's consider the work done for a tiny distance $\Delta x$. It should be approximately:
+
+$$W(x) \approx \mathbf{F}(x) \vdot \Delta r$$
+
+where $\mathbf{F}$(x) is the force applied at the position $x$.
+
+The total work done by our movement can then be the sum of all of these tiny works:
+
+$$W \approx \sum_{x=x_i}^{x_f}\mathbf{F}(x)\vdot \Delta r$$
+
+As we take smaller and smaller $\Delta r$ we get more and more exact answers and approach an integral:
+
+$$W = \lim_{\Delta r \to 0}\sum_{x=x_i}^{x_f}\mathbf{F}(x)\vdot \Delta r = \int_{x_i}^{x_f}\mathbf{F}(x)\vdot \dd r$$
+
+This process can be understood best visually:
+
+\includegraphics[scale=0.5]{work_area_a.png}
+\includegraphics[scale=0.5]{work_area_b.png}
+
+Thus the most general way to calculate work is:
+
+\begin{mytheo}{Work Done by a Changing Force}{workChange}
+    The work performed by a force that is changing with distance moving an object from one point $r_i$ to another point $r_f$  is:
+    $$W = \int_{r_i}^{r_f} \mathbf{F}(x)\vdot \dd r$$
+    
+\end{mytheo}
+If different forces are acting on the same point mass, we can model the net work performed on the point mass as:
+
+
+$$ \boxed{
+W_{net} = \sum W = \int_{x_i}^{x_f}\sum \mathbf{ F}(x)\vdot \dd r}
+$$
+
+
+
+
 \section{Kinetic Energy and Potential Energy}
 \section{Conservative vs Non-conservative Forces}
 \section{Conservative Forces and Potential Energy}
